@@ -1,7 +1,16 @@
-from flask import Flask, Response
-import requests
+from flask import Flask, Response, render_template_string
 
 app = Flask(__name__)
+
+@app.route('/')
+def home():
+    html_content = """
+    <div>
+        <h4>Hola</h4>
+        <p>Bienvenido al backend de la app de Federal FM</p>
+    </div>
+    """
+    return render_template_string(html_content)
 
 @app.route('/stream_proxy')
 def stream_proxy():
